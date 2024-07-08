@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/facebook-integration-app/node_modules
 /.pnp
 .pnp.js
 
