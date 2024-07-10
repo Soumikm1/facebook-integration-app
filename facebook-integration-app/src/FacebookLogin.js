@@ -1,3 +1,5 @@
+// NOT USED IN THE PROJECT
+
 import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
