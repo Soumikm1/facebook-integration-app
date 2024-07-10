@@ -6,28 +6,27 @@ import './App.css';
 // FacebookLogin Component
 const FacebookLoginComponent = ({ onLogin }) => {
   const responseFacebook = (response) => {
-    console.log('Facebook response:', response); // Add this line
+    console.log('Raw Facebook response:', response);
     if (response.status === 'connected') {
       console.log('Login successful');
-      onLogin(response);
+      onLogin(response.authResponse);
     } else if (response.status === 'not_authorized') {
-      console.error('Not authorized');
+      console.log('User is logged into Facebook but has not authorized your app');
     } else {
-      console.error('Login failed');
+      console.log('User is not logged into Facebook');
     }
   };
 
   return (
     <FacebookLogin
       appId="1245457853103372"
-      autoLoad={false} // Change this to false
+      autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
-      disableMobileRedirect={true}
+      onFailure={(error) => console.log('Facebook login failed:', error)}
     />
   );
 };
-
 // PageStats Component
 const PageStats = ({ pageId, accessToken, since, until }) => {
   const [stats, setStats] = useState(null);
